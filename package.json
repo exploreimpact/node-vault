@@ -1,0 +1,57 @@
+{
+  "name": "node-vault",
+  "version": "0.1.0",
+  "description": "TypeScript ESM CLI and library for encrypting/decrypting files similar to Ansible Vault.",
+  "type": "module",
+  "bin": {
+    "node-vault": "dist/bin/cli.js"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -w -p tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "pretest": "npm run build",
+    "test": "jest"
+  },
+  "keywords": [
+    "vault",
+    "encryption",
+    "cli",
+    "ansible-vault",
+    "typescript",
+    "esm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.7.5",
+    "eslint": "^9.10.0",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/tests"
+    ],
+    "transform": {},
+    "verbose": true
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

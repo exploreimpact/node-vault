@@ -1,0 +1,11 @@
+# Vendors
+node_modules/
+
+# IDE
+.idea
+
+# Project
+vault/
+node-vault.config.js
+dist/
+password.txt
