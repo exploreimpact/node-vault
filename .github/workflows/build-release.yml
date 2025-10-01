@@ -54,16 +54,15 @@ jobs:
 
           if [ "$previous_version" == "v$current_version" ]; then
             echo "Version has not been bumped. Exiting."
-            exit 1
+            echo "SKIP_WORKFLOW=true" >> $GITHUB_ENV
+            exit 0
           else
             echo current_version=$current_version >> $GITHUB_OUTPUT
           fi
 
-      - run: echo "test_value=test" >> $GITHUB_OUTPUT
-
-      - name: Create GitHub Release
+      - name: Create GitHub release
         id: github_release
-        if: success()
+        if: env.SKIP_WORKFLOW != 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -72,17 +71,6 @@ jobs:
           release_notes=$(git log -1 --pretty=%B)
           gh release create "v${{ steps.version_check.outputs.current_version }}" --title "v${{ steps.version_check.outputs.current_version }}" --notes "${release_notes}"
           echo "release_created=true" >> $GITHUB_OUTPUT
-
-  check:
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          release_created=${{ needs.release.outputs.release_created }}
-          echo "release_created: $release_created"
-
-          test_value=${{ needs.release.outputs.test_value }}
-          echo "test_value: $test_value"
 
   publish-npm:
     needs: release
