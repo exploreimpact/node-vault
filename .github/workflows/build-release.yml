@@ -72,11 +72,11 @@ jobs:
             echo current_version=$current_version >> $GITHUB_OUTPUT
           fi
 
-      - name: Publish to npm
-        if: success()
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access=public
+#      - name: Publish to npm
+#        if: success()
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#        run: npm publish --access=public
 
       - name: Create GitHub Release
         if: success()
