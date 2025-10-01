@@ -68,6 +68,14 @@ jobs:
           gh release create "v${{ steps.version_check.outputs.current_version }}" --title "v${{ steps.version_check.outputs.current_version }}" --notes "${release_notes}"
           echo release_created="true" >> $GITHUB_OUTPUT
 
+
+  check:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo ${{ needs.release.outputs.release_created }}
+
   publish-npm:
     needs: release
     if: ${{ needs.release.outputs.release_created == 'true' }}
