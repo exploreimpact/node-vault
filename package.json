@@ -1,6 +1,6 @@
 {
   "name": "@exploreimpact/node-vault",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "TypeScript ESM CLI and library for encrypting/decrypting files similar to Ansible Vault.",
   "type": "module",
   "bin": {

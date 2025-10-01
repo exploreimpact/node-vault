@@ -66,7 +66,7 @@ jobs:
           git push origin "v${{ steps.version_check.outputs.current_version }}"
           release_notes=$(git log -1 --pretty=%B)
           gh release create "v${{ steps.version_check.outputs.current_version }}" --title "v${{ steps.version_check.outputs.current_version }}" --notes "${release_notes}"
-          echo release_created=true >> $GITHUB_OUTPUT
+          echo release_created="true" >> $GITHUB_OUTPUT
 
   publish-npm:
     needs: release
