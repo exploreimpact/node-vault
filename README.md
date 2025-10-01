@@ -14,13 +14,13 @@ Important: Add your `password.txt` to .gitignore and run the encryption on a git
 ## Installation
 
 ```
-npm install --save-dev node-vault
+npm install --save-dev @exploreimpact/node-vault
 ```
 
 Or globally:
 
 ```
-npm install -g node-vault
+npm install -g @exploreimpact/node-vault
 ```
 
 ## Configuration
