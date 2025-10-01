@@ -69,8 +69,8 @@ jobs:
           echo release_created=true >> $GITHUB_OUTPUT
 
   publish-npm:
-    if: ${{ github.event.outputs.release_created == 'true' }}
     needs: create-release
+    if: ${{ needs.create-release.outputs.release_created == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
