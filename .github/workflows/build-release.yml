@@ -57,7 +57,7 @@ jobs:
             echo current_version=$current_version >> $GITHUB_OUTPUT
           fi
 
-      - run: echo test_value="this is a test" >> $GITHUB_OUTPUT
+      - run: echo "test_value=test" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         if: success()
@@ -68,7 +68,7 @@ jobs:
           git push origin "v${{ steps.version_check.outputs.current_version }}"
           release_notes=$(git log -1 --pretty=%B)
           gh release create "v${{ steps.version_check.outputs.current_version }}" --title "v${{ steps.version_check.outputs.current_version }}" --notes "${release_notes}"
-          echo release_created="true" >> $GITHUB_OUTPUT
+          echo "release_created=true" >> $GITHUB_OUTPUT
 
   check:
     needs: release
