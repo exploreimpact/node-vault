@@ -31,7 +31,11 @@
     "typescript",
     "esm"
   ],
-  "author": "",
+  "author": {
+    "name": "Claudio De Facci",
+    "email": "claudio@exploreimpact.de",
+    "url": "https://exploreimpact.de"
+  },
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
