@@ -57,6 +57,8 @@ jobs:
             echo current_version=$current_version >> $GITHUB_OUTPUT
           fi
 
+      - run: echo test_value="this is a test" >> $GITHUB_OUTPUT
+
       - name: Create GitHub Release
         if: success()
         env:
@@ -68,13 +70,13 @@ jobs:
           gh release create "v${{ steps.version_check.outputs.current_version }}" --title "v${{ steps.version_check.outputs.current_version }}" --notes "${release_notes}"
           echo release_created="true" >> $GITHUB_OUTPUT
 
-
   check:
     needs: release
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo ${{ needs.release.outputs.release_created }}
+          echo ${{ needs.release.outputs.test_value }}
 
   publish-npm:
     needs: release
