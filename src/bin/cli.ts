@@ -111,8 +111,4 @@ async function exists(p: string): Promise<boolean> {
   }
 }
 
-// Only run if invoked directly
-if (import.meta.url === new URL(`file://${process.argv[1]}`).href) {
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  main(process.argv);
-}
+main(process.argv);
