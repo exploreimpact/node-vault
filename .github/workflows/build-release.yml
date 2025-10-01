@@ -75,8 +75,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ needs.release.outputs.release_created }}
-          echo ${{ needs.release.outputs.test_value }}
+          release_created=$(needs.release.outputs.release_created)
+          echo "release_created: $release_created"
+          test_value=$(needs.release.outputs.test_value)
+          echo "test_value: $test_value"
 
   publish-npm:
     needs: release
