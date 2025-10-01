@@ -7,8 +7,6 @@ on:
   pull_request:
     branches:
       - master
-env:
-  ACTIONS_STEP_DEBUG: true
 
 jobs:
   build:
@@ -32,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    outputs:
+      release_created: ${{ steps.github_release.outputs.release_created }}
 
     steps:
       - uses: actions/checkout@v4
@@ -62,6 +62,7 @@ jobs:
       - run: echo "test_value=test" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
+        id: github_release
         if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
