@@ -85,3 +85,8 @@ followed by base64-encoded JSON containing the algorithm, salt, IV, auth tag, an
 - Format: `npm run format`
 
 This project uses TypeScript with full ESM, Jest for tests, ESLint for linting, and Prettier for formatting.
+
+## Release flow
+
+To release a new package version, bump the version inside the package.json.
+A GitHub workflow will automatically create a GitHub release and publish to npm.
