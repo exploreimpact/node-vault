@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import path from 'node:path';
 import { promises as fs } from 'node:fs';
-import { loadConfig } from '../lib/config.js';
+// Use package imports instead of relative imports to make it work when installed as a dependency
+import { loadConfig } from '@exploreimpact/node-vault';
 import {
   decryptAllInDir,
   decryptFile,
@@ -9,7 +10,7 @@ import {
   encryptFile,
   readPassword,
   ensureInit,
-} from '../lib/vault.js';
+} from '@exploreimpact/node-vault';
 
 function printHelp() {
   const help = `node-vault - Encrypt/Decrypt files with a password
